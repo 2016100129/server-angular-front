@@ -7,7 +7,15 @@ import { HttpClient } from '@angular/common/http';
 })
 export class EstadosService {
 
-  private API_SERVER = "http://localhost:8080/estados/"
+  //Prod
+  //private API_SERVER = "http://192.168.1.12:8080/apiRest/estados/"
+
+  //Prod Azure
+  private API_SERVER = "http://172.173.151.227:8080/apiRest/estados/"
+
+  //Dev
+  //private API_SERVER = "http://localhost:8080/estados/"
+
   constructor(
     private httpClient: HttpClient
   ) { }
