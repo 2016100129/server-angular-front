@@ -16,22 +16,26 @@
       <input type="number" name="" id="" formControlName="edad" class="form-control">
     </div>
 
-    <div class="form-group">
-      <label for="">Pais</label>
-      <select name="pais" id="pais" formControlName="pais" class="form-control">
-        <option value="selected"></option>
-        <option [ngValue]="item" *ngFor="let item of paises">{{item.nombre}}</option>
-      </select>
-    </div>
-
-    <div class="form-group">
-      <label for="">Estado o Región</label>
-      <select name="estado" id="estado" formControlName="estado" class="form-control" >
-        <option [ngValue]="item" *ngFor="let item of estados">{{item.nombre}}</option>
-      </select>
-    </div>
-
-    <button type="submit" class="btn btn-primary"[disabled]="personaForm.invalid">Guardar</button>
+    <div class="content-select">      
+        <mat-form-field class="mat-select" appearance="fill">
+          <mat-label>Selecione un país</mat-label>
+          <mat-select formControlName="pais">
+            <mat-option [value]="item" *ngFor="let item of paises">
+              {{item.nombre}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="mat-select" appearance="fill">
+          <mat-label>Selecione un país</mat-label>
+          <mat-select formControlName="estado">
+            <mat-option [value]="item" *ngFor="let item of estados">
+              {{item.nombre}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div> 
+       
+    <button type="submit" class="btn btn-primary" [disabled]="personaForm.invalid">Guardar</button>
   </form>
 </div>
 
@@ -52,13 +56,13 @@
     <tbody>
       <tr *ngFor="let item of personas">
         <td>{{item.id}}</td>
-        <td >{{item.nombre}}</td>
+        <td>{{item.nombre}}</td>
         <td>{{item.apellido}}</td>
         <td>{{item.edad}}</td>
         <td>{{item.pais.nombre}}</td>
         <td>{{item.estado.nombre}}</td>
         <td>
-          <button type="button" class="btn btn-success bt-option"(click)="editar(item)">Editar</button>
+          <button type="button" class="btn btn-success bt-option" (click)="editar(item)">Editar</button>
           <button type="button" class="btn btn-danger btn-option" (click)="eliminar(item)">Eliminar</button>
         </td>
       </tr>

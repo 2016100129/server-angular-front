@@ -18,4 +18,13 @@ h2,table{
     margin: 0 4%;
 }
 
+.mat-select {
+    width: 50%;
+    margin: 2% 1%;
+}
+
+.content-select {
+    display: flex;
+}
+
 

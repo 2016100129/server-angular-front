@@ -5,6 +5,11 @@ import { PaisesService } from './services/paises/paises.service';
 import { PersonaService } from './services/persona/persona.service';
 import { Subscriber } from 'rxjs';
 
+interface Food {
+  value: string;
+  viewValue: string;
+}
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -12,7 +17,6 @@ import { Subscriber } from 'rxjs';
 })
 export class AppComponent implements OnInit {
 
-  selectedPais = 'Selecione un país'
 
   personaForm!: FormGroup;
   paises: any
@@ -46,7 +50,6 @@ export class AppComponent implements OnInit {
   traerPersonas() {
     this.personaService.getAllPersonas().subscribe(resp => {
       this.personas = resp
-      console.log(resp)
     },
       error => { console.error(error) })
   }
@@ -70,8 +73,7 @@ export class AppComponent implements OnInit {
   guardar(): void {
     this.personaService.savePersona(this.personaForm.value).subscribe(resp => {
       this.personaForm.reset()
-      this.traerPersonas()
-      this.traerEstados()
+      this.estados = []
       this.personas = this.personas.filter((persona: { id: any; }) => resp.id != persona.id)
       this.personas.push(resp)
     },
